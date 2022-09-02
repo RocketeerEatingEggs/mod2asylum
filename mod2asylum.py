@@ -87,8 +87,8 @@ with open(sys.argv[2], "wb+") as PTMfile:
                 smpVolume = MODfile.read(1)
                 PTMfile.write(smpVolume)
                 PTMfile.write(b"\x00")
-                smpRepStart = int.from_bytes(MODfile.read(2), byteorder="big")
-                smpRepLength = int.from_bytes(MODfile.read(2), byteorder="big")
+                smpRepStart = int.from_bytes(MODfile.read(2), byteorder="big") * 2
+                smpRepLength = int.from_bytes(MODfile.read(2), byteorder="big") * 2
                 smpRepStartBytes = smpRepStart.to_bytes(2, byteorder="little")
                 PTMfile.write(smpLengthBytes)
                 PTMfile.write(b"\x00\x00")
